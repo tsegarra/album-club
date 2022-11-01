@@ -1,0 +1,17 @@
+.albums {
+    display: flex;
+}
+
+body {
+    background-color: #10102c;
+    margin: 0;
+}
+
+.album {
+    width: 150px;
+    height: 150px;
+}
+
+.album > img {
+    width: 100%;
+}
