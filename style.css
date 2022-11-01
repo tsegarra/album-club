@@ -8,8 +8,8 @@ body {
 }
 
 .album {
-    width: 150px;
-    height: 150px;
+    width: 25%;
+    height: auto;
 }
 
 .album > img {
