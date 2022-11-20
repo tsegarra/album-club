@@ -1,13 +1,10 @@
-.albums {
-    display: flex;
-}
-
 body {
     background-color: #10102c;
     margin: 0;
 }
 
 .album {
+    display: inline-block;
     width: 20%;
     height: auto;
 }
