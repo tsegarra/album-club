@@ -36,7 +36,9 @@ const albums = [
     new Album('The Japanese House', jill, 2019, 'Good at Falling', Date.parse('2022-10-30'), 'https://media.pitchfork.com/photos/5c7425267ad40308b4a8835c/1:1/w_800,h_800,c_limit/JapaneseHouse_GoodAtFalling.jpg'),
     new Album('Sam Cooke', tom, 1964, 'Ain\'t That Good News', Date.parse('2022-11-06'), 'https://m.media-amazon.com/images/I/41U4jv2VN9L._SY580_.jpg'),
     new Album('Arcade Fire', ryan, 2004, 'Funeral', Date.parse('2022-11-13'), 'https://upload.wikimedia.org/wikipedia/en/2/25/ArcadeFireFuneralCover.jpg'),
-    new Album('Bell X1', ajma, 2016, 'Arms', Date.parse('2022-11-27'), 'https://upload.wikimedia.org/wikipedia/en/1/16/BellX1_Arms.png'),
+    new Album('Bell X1', ajma, 2016, 'Arms', Date.parse('2022-11-28'), 'https://upload.wikimedia.org/wikipedia/en/1/16/BellX1_Arms.png'),
+    new Album('Little Dragon', rachel, 2009, 'Machine Dreams', Date.parse('2022-12-04'), 'https://upload.wikimedia.org/wikipedia/en/4/49/Little_Dragon_-_Machine_Dreams.png'),
+    new Album('Glass Animals', jill, 2014, 'Zaba', Date.parse('2022-12-11'), 'https://upload.wikimedia.org/wikipedia/en/3/32/Glass_animals_zaba.jpg'),
 ];
 
 const albumsElt = document.createElement('div');
