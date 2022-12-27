@@ -40,6 +40,7 @@ const albums = [
     new Album('Little Dragon', rachel, 2009, 'Machine Dreams', Date.parse('2022-12-04'), 'https://upload.wikimedia.org/wikipedia/en/4/49/Little_Dragon_-_Machine_Dreams.png'),
     new Album('Glass Animals', jill, 2014, 'Zaba', Date.parse('2022-12-11'), 'https://upload.wikimedia.org/wikipedia/en/3/32/Glass_animals_zaba.jpg'),
     new Album('The Cranberries', tom, 1993, 'Everybody Else Is Doing It, So Why Can\'t We?', Date.parse('2022-12-18'), 'https://upload.wikimedia.org/wikipedia/en/d/dc/Everybody_else_is_doing_it_so_why_can%27t_we_%28album_cover%29.jpg'),
+    new Album('Pearl Jam', ryan, 1996, 'No Code', Date.parse('2023-01-01'), 'https://i.scdn.co/image/ab67616d0000b2734c29f49b11488856e468719c'),
 ];
 
 const albumsElt = document.createElement('div');
