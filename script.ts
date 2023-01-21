@@ -43,6 +43,7 @@ const albums = [
     new Album('Pearl Jam', ryan, 1996, 'No Code', Date.parse('2023-01-01'), 'https://i.scdn.co/image/ab67616d0000b2734c29f49b11488856e468719c'),
     new Album('Vacacion', ajma, 2019, 'Tiempo Compartido', Date.parse('2023-01-08'), 'https://i.scdn.co/image/ab67616d0000b27374e6690e102276c07fbe75eb'),
     new Album('Joshua Bell, etc', rachel, 1999, 'Short Trip Home', Date.parse('2023-01-15'), 'https://upload.wikimedia.org/wikipedia/en/2/24/SKShortTripHome.jpg'),
+    new Album('Vampire Weekend', jill, 2013, 'Modern Vampires of the City', Date.parse('2023-01-22'), 'https://upload.wikimedia.org/wikipedia/en/4/4d/Vampire_Weekend_-_Modern_Vampires_of_the_City.png'),
 ];
 
 const albumsElt = document.createElement('div');
