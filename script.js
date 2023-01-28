@@ -32,8 +32,9 @@ var albums = [
     new Album('The Cranberries', tom, 1993, 'Everybody Else Is Doing It, So Why Can\'t We?', Date.parse('2022-12-18'), 'https://upload.wikimedia.org/wikipedia/en/d/dc/Everybody_else_is_doing_it_so_why_can%27t_we_%28album_cover%29.jpg'),
     new Album('Pearl Jam', ryan, 1996, 'No Code', Date.parse('2023-01-01'), 'https://i.scdn.co/image/ab67616d0000b2734c29f49b11488856e468719c'),
     new Album('Vacacion', ajma, 2019, 'Tiempo Compartido', Date.parse('2023-01-08'), 'https://i.scdn.co/image/ab67616d0000b27374e6690e102276c07fbe75eb'),
-    new Album('Joshua Bell, etc', rachel, 1999, 'Short Trip Home', Date.parse('2023-01-15'), 'https://upload.wikimedia.org/wikipedia/en/2/24/SKShortTripHome.jpg'),
+    new Album('Joshua Bell, etc', rachel, 1999, 'Short Trip Home', Date.parse('2023-01-15'), 'https://i.scdn.co/image/ab67616d0000b273b45c319ffed570954ad7b096'),
     new Album('Vampire Weekend', jill, 2013, 'Modern Vampires of the City', Date.parse('2023-01-22'), 'https://upload.wikimedia.org/wikipedia/en/4/4d/Vampire_Weekend_-_Modern_Vampires_of_the_City.png'),
+    new Album('The Blue Nile', tom, 1989, 'Hats', Date.parse('2023-01-29'), 'https://media.pitchfork.com/photos/5a2ebf6ae807ee342016607f/1:1/w_600/hats%20Blue%20Nile.jpg'),
 ];
 var albumsElt = document.createElement('div');
 albumsElt.classList.add('albums');
