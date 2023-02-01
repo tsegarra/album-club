@@ -35,6 +35,8 @@ var albums = [
     new Album('Joshua Bell, etc', rachel, 1999, 'Short Trip Home', Date.parse('2023-01-15'), 'https://i.scdn.co/image/ab67616d0000b273b45c319ffed570954ad7b096'),
     new Album('Vampire Weekend', jill, 2013, 'Modern Vampires of the City', Date.parse('2023-01-22'), 'https://upload.wikimedia.org/wikipedia/en/4/4d/Vampire_Weekend_-_Modern_Vampires_of_the_City.png'),
     new Album('The Blue Nile', tom, 1989, 'Hats', Date.parse('2023-01-29'), 'https://media.pitchfork.com/photos/5a2ebf6ae807ee342016607f/1:1/w_600/hats%20Blue%20Nile.jpg'),
+    new Album('Pat Metheny Group', ryan, 1978, 'Pat Metheny Group', Date.parse('2023-02-05'), 'https://i.scdn.co/image/ab67616d0000b27331cbb08e9fa5a67aeb398d7c'),
+
 ];
 var albumsElt = document.createElement('div');
 albumsElt.classList.add('albums');
