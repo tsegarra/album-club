@@ -47,6 +47,7 @@ const albums = [
     new Album('The Blue Nile', tom, 1989, 'Hats', Date.parse('2023-01-29'), 'https://media.pitchfork.com/photos/5a2ebf6ae807ee342016607f/1:1/w_600/hats%20Blue%20Nile.jpg'),
     new Album('Pat Metheny Group', ryan, 1978, 'Pat Metheny Group', Date.parse('2023-02-05'), 'https://i.scdn.co/image/ab67616d0000b27331cbb08e9fa5a67aeb398d7c'),
     new Album('Wilco', ajma, 2007, 'Sky Blue Sky', Date.parse('2023-02-12'), 'https://i.scdn.co/image/ab67616d0000b27348473ebc10dfa3cf74da92c6'),
+    new Album('The Isley Brothers', rachel, 1973, '3 + 3', Date.parse('2023-02-19'), 'https://i.scdn.co/image/ab67616d0000b2739d1d0e64081ea5c0927d6051'),
 
 
 ];
