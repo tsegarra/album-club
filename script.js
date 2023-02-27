@@ -39,6 +39,7 @@ var albums = [
     new Album('Wilco', ajma, 2007, 'Sky Blue Sky', Date.parse('2023-02-12'), 'https://i.scdn.co/image/ab67616d0000b27348473ebc10dfa3cf74da92c6'),
     new Album('The Isley Brothers', rachel, 1973, '3 + 3', Date.parse('2023-02-19'), 'https://i.scdn.co/image/ab67616d0000b2739d1d0e64081ea5c0927d6051'),
     new Album('The 1975', jill, 2016, 'I Like It When You Sleep, for You Are So Beautiful yet So Unaware of It', Date.parse('2023-02-26'), 'https://i.scdn.co/image/ab67616d00001e026d955443189610c5bfc8ff05'),
+    new Album('The Pharcyde', tom, 1992, 'Bizarre Ride II the Pharcyde', Date.parse('2023-03-05'), 'https://i.scdn.co/image/ab67616d0000b2739ec4abd35652fafe34ee7dfb'),
 
 
 ];
