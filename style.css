@@ -3,6 +3,10 @@ body {
     margin: 0;
 }
 
+.albums {
+    font-size: 0;
+}
+
 .album {
     display: inline-block;
     width: 20%;

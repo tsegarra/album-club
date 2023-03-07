@@ -1,10 +1,48 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <title>Album Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-<body>
-    <script src="script.js"></script>
-</body>
+  </head>
+  <body>
+    <div class="albums"></div>
+
+    <script>
+      function gapiLoaded() {
+          gapi.load('client', function () {
+            gapi.client.init({
+              apiKey: 'AIzaSyBJ4niYNhHDOLMFw-HT4y6vtoDHwm-r5DI',
+              discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+            }).then(() => {
+              gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1kASQ4KDFn0x-FnnmzB2V9lnVQFU_VigKtB7y-k587UU',
+                range: 'A1:F1000',
+              }).then((response) => {
+                const albumsElt = document.getElementsByClassName('albums')[0];
+                const range = response.result;
+                if (!range || !range.values || range.values.length === 0) {
+                  console.error('no values found');
+                  return;
+                }
+                for (let i = 0; i < range.values.length; i++) {
+                    const url = range.values[i][5];
+                    const title = range.values[i][3];
+                    console.log(url);
+                    const albumElt = document.createElement('div');
+                    albumElt.classList.add('album');
+                    const img = document.createElement('img');
+                    img.setAttribute('alt', title);
+                    img.setAttribute('src', url);
+                    albumElt.appendChild(img);
+                    albumsElt.appendChild(albumElt);
+                }
+              });
+            });
+          });
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  </body>
 </html>
