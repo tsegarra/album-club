@@ -1,10 +1,10 @@
 body {
-    background-color: #10102c;
     margin: 0;
 }
 
 .albums {
     font-size: 0;
+    filter: drop-shadow(0 0 3px);
 }
 
 .album {
