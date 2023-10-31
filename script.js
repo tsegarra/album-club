@@ -51,16 +51,40 @@ function makeGroupsOfSizes(items, sizes) {
 }
 
 function makePaddedRows(itemGroups) {
-    const paddedRows = itemGroups.map(items => new PaddedRow(items, items.length));
-    if (paddedRows.length > 1) {
-        const lastRow = paddedRows[paddedRows.length - 1];
-        const secondLastRow = paddedRows[paddedRows.length - 2];
+    const longestLength = Math.max(...itemGroups.map(i => i.length));
+    return itemGroups.map(items => new PaddedRow(items, longestLength));
+}
 
-        if (secondLastRow.width > lastRow.width) {
-            lastRow.width = secondLastRow.width;
+function getNumColumnsPerRow(itemsPerRow, useUserColumns) {
+    if (useUserColumns) {
+        return itemsPerRow.map(() => Math.max(...itemsPerRow));
+    } else {
+        const numColumns = itemsPerRow;
+        if (numColumns.length > 1) {
+            if (numColumns[numColumns.length - 2] > numColumns[numColumns.length - 1]) {
+                numColumns[numColumns.length - 1] = numColumns[numColumns.length - 2];
+            }
         }
+        return numColumns;
     }
-    return paddedRows;
+}
+
+function alignColumns(rowElements) {
+    const body = document.getElementsByTagName('body')[0];
+    const userColumnsClassName = 'uses-user-columns';
+    const isUsingUserColumns = body.classList.contains(userColumnsClassName);
+
+    const columnsPerRow = getNumColumnsPerRow(rowElements.map(r => r.children.length), !isUsingUserColumns);
+
+    if (isUsingUserColumns) {
+        body.classList.remove(userColumnsClassName);
+    } else {
+        body.classList.add(userColumnsClassName);
+    }
+
+    rowElements.forEach((e, i) => {
+        e.style.gridTemplateColumns = `repeat(${columnsPerRow[i]}, 1fr)`;
+    });
 }
 
 function drawAlbums(spreadsheetRows) {
@@ -68,13 +92,12 @@ function drawAlbums(spreadsheetRows) {
     const indicesOfAjmaPicks = albums.map((a, i) => [i, a])
         .filter(albumWithIndex => albumWithIndex[1].whoSelectedIt === 'ajma')
         .map(albumWithIndex => albumWithIndex[0]);
-    makePaddedRows(makeGroupsOfSizes(albums, getDeltas(indicesOfAjmaPicks))).forEach(albumRow => {
+
+    const rowElements = makeGroupsOfSizes(albums, getDeltas(indicesOfAjmaPicks)).map(albumRow => {
         const albumsElt = document.createElement('div');
         albumsElt.classList.add('albums');
-        albumsElt.style.gridTemplateColumns = `repeat(${albumRow.width}, 1fr)`;
-        document.getElementsByTagName('body')[0].appendChild(albumsElt);
 
-        albumRow.items.forEach(album => {
+        albumRow.forEach(album => {
             const albumElt = document.createElement('div');
             albumElt.classList.add('album');
             const img = document.createElement('img');
@@ -83,5 +106,11 @@ function drawAlbums(spreadsheetRows) {
             albumElt.appendChild(img);
             albumsElt.appendChild(albumElt);
         });
+
+        return albumsElt;
     });
+
+    alignColumns(rowElements);
+
+    rowElements.forEach(e => document.getElementsByTagName('body')[0].appendChild(e));
 }

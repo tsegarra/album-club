@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #e3e4e0;
 }
 
 .albums {
@@ -7,6 +8,8 @@ body {
   filter: drop-shadow(0 0 3px);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  transition: transform 0.3s;
+  transition-property: grid-template-columns;
 }
 
 .album {
@@ -14,7 +17,6 @@ body {
   width: 100%;
   padding-bottom: 100%;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .album > img {
@@ -24,9 +26,4 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.album:hover > img {
-  transform: scale(1.2);
 }
