@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css"/>
     <script src="script.js"></script>
 </head>
-<body class="uses-user-columns">
+<body>
+<div class="all-albums"></div>
 <script>
     function gapiLoaded() {
         gapi.load('client', function () {
@@ -30,7 +31,7 @@
                     drawAlbums(spreadsheetRows);
 
                     document.getElementsByTagName('body')[0].addEventListener('click', () => {
-                        alignColumns(Array.from(document.getElementsByClassName('albums')));
+                        advanceView();
                     });
                 });
             });

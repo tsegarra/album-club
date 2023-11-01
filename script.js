@@ -69,22 +69,54 @@ function getNumColumnsPerRow(itemsPerRow, useUserColumns) {
     }
 }
 
-function alignColumns(rowElements) {
+function getViewClasses() {
+    return Array.from(document.getElementsByTagName('body')[0].classList)
+        .filter(c => c.startsWith('view-'));
+}
+
+function getNextViewIndex() {
+    const numPossibleViews = 3;
+    const viewClasses = getViewClasses();
+    const currentViewIndex = viewClasses.length > 0 ?
+        parseInt(viewClasses[0].substring('view-'.length)) : 0;
+    const nextViewIndex = currentViewIndex + 1;
+    return nextViewIndex > numPossibleViews ? 1 : nextViewIndex;
+}
+
+function applyViewIndexClass(index) {
     const body = document.getElementsByTagName('body')[0];
-    const userColumnsClassName = 'uses-user-columns';
-    const isUsingUserColumns = body.classList.contains(userColumnsClassName);
+    getViewClasses().forEach(c => body.classList.remove(c));
+    body.classList.add('view-' + index);
+}
 
-    const columnsPerRow = getNumColumnsPerRow(rowElements.map(r => r.children.length), !isUsingUserColumns);
+function advanceView() {
+    const nextViewIndex = getNextViewIndex();
+    applyViewIndexClass(nextViewIndex);
 
-    if (isUsingUserColumns) {
-        body.classList.remove(userColumnsClassName);
-    } else {
-        body.classList.add(userColumnsClassName);
-    }
+    const rowElements = Array.from(document.getElementsByClassName('albums'))
+    const body = document.getElementsByTagName('body')[0];
+
+    const columnsPerRow = getNumColumnsPerRow(rowElements.map(r => r.children.length), nextViewIndex === 2);
 
     rowElements.forEach((e, i) => {
         e.style.gridTemplateColumns = `repeat(${columnsPerRow[i]}, 1fr)`;
     });
+}
+
+function getPersonName(n) {
+    return n === 'ajma' ? 'Albanese' :
+        n.charAt(0).toUpperCase() + n.slice(1);
+}
+
+function getElement(tagName, content, className) {
+    const element = document.createElement(tagName);
+    element.textContent = content;
+    element.classList.add(className);
+    return element;
+}
+
+function getSpan(content, className) {
+    return getElement('span', content, className);
 }
 
 function drawAlbums(spreadsheetRows) {
@@ -100,17 +132,40 @@ function drawAlbums(spreadsheetRows) {
         albumRow.forEach(album => {
             const albumElt = document.createElement('div');
             albumElt.classList.add('album');
+
             const img = document.createElement('img');
+            img.classList.add('cover-art');
             img.setAttribute('alt', album.albumTitle);
             img.setAttribute('src', album.imageUrl);
             albumElt.appendChild(img);
+
+            const albumDetailsElt = document.createElement('div');
+            albumDetailsElt.classList.add('details');
+            albumElt.appendChild(albumDetailsElt);
+    
+            albumDetailsElt.appendChild(
+                getElement('h2', `${album.albumTitle} (${album.year})`, 'title')
+            );
+            
+            albumDetailsElt.appendChild(
+                getSpan(album.artist, 'artist')
+            );
+            
+            albumDetailsElt.appendChild(
+                getSpan(`Selected by ${getPersonName(album.whoSelectedIt)}`, 'selected-by')
+            );
+
+            albumDetailsElt.appendChild(
+                getSpan(`Discussed on ${album.dateOfMeeting}`, 'meeting-date')
+            );
+
             albumsElt.appendChild(albumElt);
         });
 
         return albumsElt;
     });
 
-    alignColumns(rowElements);
+    rowElements.forEach(e => document.getElementsByClassName('all-albums')[0].appendChild(e));
 
-    rowElements.forEach(e => document.getElementsByTagName('body')[0].appendChild(e));
+    advanceView();
 }
