@@ -27,3 +27,32 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+body.charts {
+  /*background-color: #10102c;*/
+}
+
+#charts {
+  display: flex;
+}
+
+.chart {
+  display: flex;
+  align-items: end;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.chart-header {
+  text-transform: uppercase;
+}
+
+.chart-bar-height {
+    position: absolute;
+    top: -1.2rem;
+    left: 0;
+}
+
+.chart-bar-container {
+    position: relative;
+}

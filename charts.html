@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Album Club | Charts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8"/>
+    <link rel="icon" href="club.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css"/>
+    <script src="charts.js"></script>
+</head>
+<body class="charts">
+<div id="charts"></div>
+<script>
+    function gapiLoaded() {
+        gapi.load('client', function () {
+            gapi.client.init({
+                apiKey: 'AIzaSyBJ4niYNhHDOLMFw-HT4y6vtoDHwm-r5DI',
+                discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+            }).then(() => {
+                gapi.client.sheets.spreadsheets.values.get({
+                    spreadsheetId: '1kASQ4KDFn0x-FnnmzB2V9lnVQFU_VigKtB7y-k587UU',
+                    range: 'A1:F1000',
+                }).then((response) => {
+                    const range = response.result;
+                    const spreadsheetRows = range.values;
+                    if (!range || !spreadsheetRows || spreadsheetRows.length === 0) {
+                        console.error('no values found');
+                        return;
+                    }
+
+                    drawCharts(spreadsheetRows);
+                });
+            });
+        });
+    }
+</script>
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+</body>
+</html>
