@@ -55,9 +55,9 @@ function createChart(chartTitle, albumsByDecade) {
         albumsOfThisDecade
             .sort((a, b) => a.year < b.year)
             .forEach(album => {
-                const albumElement = document.createElement('div');
+                const albumElement = document.createElement('img');
                 albumElement.classList.add('chart-bar-album');
-                albumElement.textContent = album.albumTitle.substring(0,1);
+                albumElement.src = album.imageUrl;
                 chartBar.appendChild(albumElement);
             });
 

@@ -29,11 +29,12 @@ body {
 }
 
 body.charts {
-  /*background-color: #10102c;*/
+  background-color: #10102c;
 }
 
 #charts {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .chart {
@@ -55,4 +56,13 @@ body.charts {
 
 .chart-bar-container {
     position: relative;
+}
+
+.chart-bar {
+    display: flex;
+}
+
+.chart-bar-album {
+    max-width: 50px;
+    height: auto;
 }
