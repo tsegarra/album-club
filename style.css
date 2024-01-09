@@ -29,40 +29,59 @@ body {
 }
 
 body.charts {
-  background-color: #10102c;
+  background-color: #3e568b;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #charts {
-  display: flex;
-  flex-wrap: wrap;
+  padding: 1rem;
 }
 
 .chart {
+  background-color: rgba(255,255,255,0.85);
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 0 4px;
+  max-width: 30rem;
+  margin: 0 auto 1rem;
+}
+
+.chart-bars {
   display: flex;
   align-items: end;
-  background-color: white;
-  border-radius: 8px;
+  justify-content: center;
 }
 
 .chart-header {
   text-transform: uppercase;
+  margin: 0;
+  font-size: 0.85rem;
 }
 
 .chart-bar-height {
-    position: absolute;
-    top: -1.2rem;
-    left: 0;
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 .chart-bar-container {
-    position: relative;
+  position: relative;
+  width: 14%;
 }
 
 .chart-bar {
-    display: flex;
+  display: flex;
+  flex-flow: column;
+  border-bottom: 1px solid black;
 }
 
 .chart-bar-album {
-    max-width: 50px;
     height: auto;
+    width: 100%;
+}
+
+.chart-bar-label {
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding-top: 4px;
 }

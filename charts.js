@@ -41,16 +41,27 @@ function createChart(chartTitle, albumsByDecade) {
     chartHeader.textContent = chartTitle;
     chart.appendChild(chartHeader);
 
+    const chartBars = document.createElement('div');
+    chartBars.classList.add('chart-bars');
+    chart.appendChild(chartBars);
+
     Array.from(albumsByDecade.keys()).sort().forEach(decadeString => {
         const chartBarContainer = document.createElement('div');
         chartBarContainer.classList.add('chart-bar-container');
-        chart.appendChild(chartBarContainer);
+        chartBars.appendChild(chartBarContainer);
 
         const chartBar = document.createElement('div');
         chartBar.classList.add('chart-bar');
         chartBarContainer.appendChild(chartBar);
 
         const albumsOfThisDecade = albumsByDecade.get(decadeString);
+
+        if (albumsOfThisDecade.length > 0) {
+            const barHeight = document.createElement('span');
+            barHeight.classList.add('chart-bar-height');
+            barHeight.textContent = albumsOfThisDecade.length;
+            chartBar.appendChild(barHeight);
+        }
 
         albumsOfThisDecade
             .sort((a, b) => a.year < b.year)
@@ -66,12 +77,6 @@ function createChart(chartTitle, albumsByDecade) {
         barLabel.textContent = decadeString.substring(2);
         chartBarContainer.appendChild(barLabel);
 
-        if (albumsOfThisDecade.length > 0) {
-            const barHeight = document.createElement('span');
-            barHeight.classList.add('chart-bar-height');
-            barHeight.textContent = albumsOfThisDecade.length;
-            chartBarContainer.appendChild(barHeight);
-        }
     });
 }
 
@@ -84,7 +89,7 @@ function drawCharts(spreadsheetRows) {
 
     const maximalDecadeSet = new Set(albums.map(a => getDecadeString(a.year)));
 
-    createChart('all', getAlbumsByDecadeMap(albums, maximalDecadeSet));
+    createChart('club', getAlbumsByDecadeMap(albums, maximalDecadeSet));
 
     getMap(albums, a => a.whoSelectedIt, new Set())
         .forEach((albumsForPerson, personName) => {
