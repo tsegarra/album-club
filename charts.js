@@ -36,10 +36,12 @@ function createChart(chartTitle, albumsByDecade) {
     chart.classList.add('chart');
     document.getElementById('charts').appendChild(chart);
 
-    const chartHeader = document.createElement('h2');
-    chartHeader.classList.add('chart-header');
-    chartHeader.textContent = chartTitle;
-    chart.appendChild(chartHeader);
+    if (chartTitle) {
+        const chartHeader = document.createElement('h2');
+        chartHeader.classList.add('chart-header');
+        chartHeader.textContent = chartTitle;
+        chart.appendChild(chartHeader);
+    }
 
     const chartBars = document.createElement('div');
     chartBars.classList.add('chart-bars');
@@ -89,7 +91,7 @@ function drawCharts(spreadsheetRows) {
 
     const maximalDecadeSet = new Set(albums.map(a => getDecadeString(a.year)));
 
-    createChart('club', getAlbumsByDecadeMap(albums, maximalDecadeSet));
+    createChart('', getAlbumsByDecadeMap(albums, maximalDecadeSet));
 
     getMap(albums, a => a.whoSelectedIt, new Set())
         .forEach((albumsForPerson, personName) => {
