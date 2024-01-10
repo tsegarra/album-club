@@ -66,7 +66,7 @@ function createChart(chartTitle, albumsByDecade) {
         }
 
         albumsOfThisDecade
-            .sort((a, b) => a.year < b.year)
+            .sort((a, b) => b.year - a.year)
             .forEach(album => {
                 const albumElement = document.createElement('img');
                 albumElement.classList.add('chart-bar-album');
