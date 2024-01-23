@@ -28,9 +28,12 @@ body {
   object-fit: cover;
 }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 body.charts {
   background-color: #3e568b;
-  font-family: 'Open Sans', sans-serif;
 }
 
 #charts {
@@ -75,8 +78,8 @@ body.charts {
 }
 
 .chart-bar-album {
-    height: auto;
-    width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .chart-bar-label {
@@ -84,4 +87,45 @@ body.charts {
   text-align: center;
   display: block;
   padding-top: 4px;
+}
+
+.popularity-chart-album {
+  width: 40px;
+  height: 40px;
+}
+
+.popularity-section {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+
+.popularity-row {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.popularity-row-albums {
+  position: relative;
+  flex-grow: 1;
+}
+
+.popularity-row::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-left: 2.5rem;
+  height: 19px;
+  border-bottom: 1px solid black;
+  z-index: -1;
+  content: " ";
+}
+
+.popularity-row-label {
+  width: 2rem;
+  text-align: center;
 }
