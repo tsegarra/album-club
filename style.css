@@ -92,40 +92,44 @@ body.charts {
 .popularity-chart-album {
   width: 40px;
   height: 40px;
-}
-
-.popularity-section {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  border-bottom: 1px solid black;
+  z-index: 1;
+  box-shadow: 0 0 2px;
 }
 
 .popularity-row {
-  height: 40px;
+  height: 48px;
   display: flex;
   align-items: center;
   position: relative;
 }
 
 .popularity-row-albums {
-  position: relative;
+  font-size: 0;
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 8px;
 }
 
-.popularity-row::before {
-  display: block;
+.popularity-row-albums::after {
   position: absolute;
-  top: 0;
-  width: 100%;
-  padding-left: 2.5rem;
-  height: 19px;
-  border-bottom: 1px solid black;
-  z-index: -1;
+  border-bottom: 1px solid lightgrey;
   content: " ";
+  width: 100%;
 }
 
 .popularity-row-label {
-  width: 2rem;
+  width: 2.5rem;
   text-align: center;
+}
+
+#popularity-chart {
+    margin-top: 1rem;
+    width: 60%;
+}
+
+#popularity-chart .chart-header {
+  margin-bottom: 1rem;
 }
