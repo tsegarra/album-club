@@ -126,10 +126,15 @@ body.charts {
 }
 
 #popularity-chart {
-    margin-top: 1rem;
-    width: 60%;
+  margin-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #popularity-chart .chart-header {
   margin-bottom: 1rem;
+}
+
+.popularity-chart-container {
+  padding: 0 1rem;
 }
